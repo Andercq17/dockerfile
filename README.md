@@ -18,7 +18,7 @@ A continuación, la explicación de cada comando del Dockerfile:
 
 **RUN rm /var/www/html/index.html ->** como se instaló el servicio de apache2, entonces este viene con un archivo html por defecto llamado "index", entonces lo borramos para que no interfiera con los archivos clonados.
 
-**RUN cp -r pagina_prueba/* /var/www/html/ ->** Se copian todos los archivos de la carpeta "pagina_prueba" los cuales son de la pagina que se va a exponer, y se trasladan a la zona donde se lee el index la cual es /var/www/html/
+**RUN cp -r pagina_prueba/\* /var/www/html/ ->** Se copian todos los archivos de la carpeta "pagina_prueba" los cuales son de la pagina que se va a exponer, y se trasladan a la zona donde se lee el index la cual es /var/www/html/
 
 **EXPOSE 80 ->** Se expone el puerto 80 del contenedor para poder enlazarlo con el de la maquina.
 
