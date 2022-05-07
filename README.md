@@ -1,5 +1,34 @@
 # Dockerfile
 
+## Ejecución del Dockerfile
+
+## 1.  Primero vamos a ejecutar el comando que construye la imagen del Dockerfile con su contexto y ese es el siguiente:
+* sudo docker build -t [nombre]:[versión] [ubicación del dockerfile]
+
+Un ejemplo sería el siguiente:
+
+Si mi dockerfile está en la ubicación del directorio actual entonces basta con señalar ese directorio con un ".", si no lo está entonces se coloca la ruta del directorio
+
+* ejemplo1: sudo docker build -t anderson:v01 .
+* ejemplo2: sudo docker build -t anderson:v01 /home/
+
+
+## 2. Después de tener ya construida nuestra imagen del dockerfile, entonces vamos a verificar que si se haya construido con el siguiente comando:
+* sudo docker image ls
+
+Deberá aparecer los tags con el que creaste la imagen, en este caso aparecería primero anderson y al lado v01
+
+## 3. Una vez comprobemos que si está la imagen y todo salió bien, entonces corremos la imagen en un contenedor nuevo en modo demonio, es decir, en segundo plano.
+
+Para correr un nuevo contenedor con la imagen que creamos, utilizamos el siguiente comando:
+* sudo docker run [forma de ejecución] [parametro de puerto] [puerto maquina local]:[puerto expuesto en contenedor] [imagen a correr]
+
+En este caso, nosotros lo vamos a correr en forma de demonio para que podamos seguir trabajando en nuestro servidor, también, como en el dockerfile se especificó que el contenedor se expusiera el puerto 80 entonces vamos a enlazar nuestro puerto 80 con el del contenedor y correremos la imagen que construimos anteriormente que fue para esta situación la llamada "anderson:v01"
+
+Dicho lo anterior, la forma de ejecución de la imagen en un nuevo contenedor quedó con el siguiente comando:
+* **sudo docker run -d -p 80:80 anderson:v01**
+----------------------------------------------------------------------------------------------------------------------------------------------
+
 A continuación, la explicación de cada comando del Dockerfile:
 
 **FROM ubuntu** 
